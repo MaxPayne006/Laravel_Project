@@ -84,7 +84,7 @@ class PostController extends Controller
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension; // did this to make the file name unique
             // upload the image
-            $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('/public/cover_images',$fileNameToStore);
         }
         else{
             $fileNameToStore = 'noimage.jpg';
@@ -160,7 +160,7 @@ class PostController extends Controller
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension; // did this to make the file name unique
             // upload the image
-            $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('/public/cover_images',$fileNameToStore);
         }
 
 
@@ -198,7 +198,7 @@ class PostController extends Controller
             // Delete the Image 
             // WE have to bring in the storage library
             
-                Storage::delete('public/cover_images/'.$post->cover_image);
+                Storage::delete('/public/cover_images/'.$post->cover_image);
         
             // Storage::delete('public/storage/cover_images'.$post->cover_image);
         }
