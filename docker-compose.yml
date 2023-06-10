@@ -5,7 +5,7 @@ services:
     container_name: laravel-docker
     build: .
     volumes:
-      - laravel-data:/var/www/html
+      - .:/var/www/html
     ports:
       - 9000:80
     environment:
@@ -32,5 +32,4 @@ services:
       - PMA_ARBITRARY=1
 
 volumes:
-  laravel-data:
   mysql-data:
