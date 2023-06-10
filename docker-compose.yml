@@ -1,10 +1,11 @@
- services:
+version: '3'
 
+services:
   laravel-docker:
     container_name: laravel-docker
     build: .
     volumes:
-      - .:/var/www/html
+      - laravel-data:/var/www/html
     ports:
       - 9000:80
     environment:
@@ -21,7 +22,7 @@
     ports:
       - 9003:3306
     volumes:
-      - ./mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
   
   phpmyadmin:
     image: phpmyadmin:latest
@@ -29,3 +30,7 @@
       - 9001:80
     environment:
       - PMA_ARBITRARY=1
+
+volumes:
+  laravel-data:
+  mysql-data:
