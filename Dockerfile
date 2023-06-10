@@ -25,3 +25,9 @@ RUN docker-php-ext-install gettext intl pdo_mysql gd
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
+# Set permissions and run commands
+RUN chmod -R 777 storage && \
+    php artisan cache:clear && \
+    php artisan config:clear && \
+    php artisan config:cache && \
+    php artisan migrate
